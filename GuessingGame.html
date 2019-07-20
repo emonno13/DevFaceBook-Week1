@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html >
+<head>  
+    <title>Document</title>
+</head>
+<body>
+    <p id="result">Please type any number </p>
+    <input id="number" />
+    <button onclick="myFunction()">Guess</button>
+    <h4 id="pastResult">PAST RESULT</h4>
+
+    <script>
+        var min=1;
+        var max=100;
+        var yourRandomNumber = Math.ceil(Math.random()*(+max - +min)) + +min;
+        var pastResult = '';
+        var count=10;
+
+        alert(yourRandomNumber);
+        function myFunction(){
+            if (count == 1){
+                alert(
+                    'You lose. Your correct number is' +
+                    yourRandomNumber +
+                    ', Please retry'
+                );
+                location.reload();
+            }
+            var yourInput = document.getElementById('number').value;
+            if(yourInput == yourRandomNumber){
+                document.getElementById('result').innerHTML = 'YOU ARE THE LORD OF THE GUESSES';
+                document.getElementById('result').style.backgroundColor = 'green';
+            }else if (yourInput < yourRandomNumber){
+                count--;
+                document.getElementById('result').innerHTML = 'Your number is too low, guess higher. You have '+ count +' guesses left';
+                document.getElementById('result').style.backgroundColor = 'red';
+            }else if (yourInput > yourRandomNumber){
+                count--;
+                document.getElementById('result').innerHTML = 'Your number is too high, guess lower. You have '+ count +' guesses left';
+                document.getElementById('result').style.backgroundColor = 'red';
+            }
+            pastResult = pastResult+yourInput+'<br>';
+            document.getElementById('pastResult').innerHTML=pastResult;           
+
+        }
+
+    </script>
+</body>
+</html>
