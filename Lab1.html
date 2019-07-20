@@ -1,0 +1,31 @@
+<h1>Currency Converter</h1>
+<input type="text" id="moneyinput" />
+<button onclick="convertToVnd()">Convert Currency</button>
+<br>
+<input type="radio" name="currency" value="usd">USD<br>
+  <input type="radio" name="currency" value="vnd">VND<br>
+<span id="result"></span>
+
+<script>
+
+function convertToVnd() {
+    
+    let mw = document.getElementById("moneyinput").value;
+    //let rachecked =  document.getElementByName("currency");
+    // chạy mảng tìm điều kiện
+    let racheck = Array.from(document.getElementsByName("currency")).find(r => r.checked).value;
+    alert(racheck);
+
+    //tạo 1 object để trả về dữ liệu 
+    money={
+        usd:23255.814,
+        vnd:0.000043
+    }
+    // money[racheck] kiểm tra value usd hay vnd
+    let Result=money[racheck]*mw + racheck ;
+
+
+    document.getElementById('result').innerHTML=Result; 
+}
+
+</script>
